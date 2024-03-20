@@ -1,0 +1,201 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  background-color: #b9d9eb;
+  color: #1f305e;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Now section */
+
+.todaySection {
+  margin: auto;
+  display: flex;
+  max-width: 75rem;
+}
+
+.todaySection > * {
+  flex: 0 0 50%;
+  padding: 1rem;
+}
+
+.todaySection img,
+.todaySection > .tempNow > p {
+  max-width: 10rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.tempNow {
+  margin-left: auto;
+  position: relative;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.tempNow::after {
+  content: "";
+  width: 4.5px;
+  height: 70%;
+  background-color: #1f305e;
+  display: inline-block;
+  position: absolute;
+  top: 10%;
+  right: 0;
+}
+
+.tempDetails__container {
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+  font-size: 1.3rem;
+  flex-wrap: wrap;
+}
+
+.tempDetails__container > p {
+  flex: 0 0 25%;
+  margin: 0;
+}
+
+@media (max-width: 678px) {
+  .todaySection {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tempDetails__container {
+    justify-content: center;
+  }
+
+  .tempNow {
+    margin: auto;
+  }
+
+  .tempNow::after {
+    top: 100%;
+    right: 50%;
+    transform: translate(50%, 50%);
+    height: 0.3125rem;
+    width: 70%;
+  }
+}
+
+/* Week section */
+
+.weekTempReport {
+  margin: auto;
+  width: 90%;
+  max-width: 75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  grid-auto-flow: dense;
+}
+
+@media (max-width: 678px) {
+  .weekTempReport {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
+
+.card > img {
+  max-width: 8rem;
+}
+
+.card {
+  max-width: 12.5rem;
+  min-width: 0px;
+  padding: 1rem;
+  border: 3px solid black;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1.4rem;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.card p {
+  margin: 0.2rem;
+}
+/* Hourly section */
+
+.fullyDescriptionCard {
+  display: flex;
+  gap: 2rem;
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  justify-content: left;
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  overflow-y: scroll;
+}
+
+.fullyDescriptionCard img {
+  max-width: 4rem;
+}
+
+/* ============= loader =============*/
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1f305e;
+  color: white;
+  flex-direction: column;
+}
+
+.loader > span {
+  margin-bottom: 10vh;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.loader--hidden {
+  display: none;
+}
+
+.loader::after {
+  content: "";
+  width: 75px;
+  height: 75px;
+  border: 15px solid white;
+  border-top-color: black;
+  border-radius: 50%;
+  animation: loading 0.75s ease infinite;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.fullyDescriptionCard > * {
+  flex-grow: 1;
+  flex-basis: 20%;
+}
